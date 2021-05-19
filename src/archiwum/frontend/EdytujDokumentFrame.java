@@ -28,14 +28,14 @@ public class EdytujDokumentFrame extends javax.swing.JFrame {
         //1
         wyswietl(counterP, counterD);
         bPrPoprzedni.setEnabled(false);
-        bDocPoprzedni.setEnabled(false);
+        
     }
     private void wyswietl(int counterP, int counterD){	      
          this.p = listaPracownikow.get(counterP);
          tPracownik.setText(p.toString());
          this.listaDokumentow = db.dokumenty_idPracownika(p);
          if(listaDokumentow.size()==0){
-             counterD=0;
+             
             tRodzaj.setText("");
             tNazwa.setText("");
          }else{
@@ -225,6 +225,7 @@ public class EdytujDokumentFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
         if(counterP>0){
             counterP-=1;
+            counterD=0;
             this.wyswietl(counterP,counterD);
             if(counterP==0) bPrPoprzedni.setEnabled(false);
             bPrNastepny.setEnabled(true);
@@ -236,6 +237,7 @@ public class EdytujDokumentFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
         if(counterP+1<listaPracownikow.size()){
             counterP+=1;
+            counterD=0;
             this.wyswietl(counterP, counterD);
             if(counterP==listaPracownikow.size()-1) bPrNastepny.setEnabled(false);
             bPrPoprzedni.setEnabled(true);
@@ -248,8 +250,7 @@ public class EdytujDokumentFrame extends javax.swing.JFrame {
         if(counterD>0){
             counterD-=1;
             this.wyswietl(counterP,counterD);
-            if(counterD==0) bDocPoprzedni.setEnabled(false);
-            bDocNastepny.setEnabled(true);
+            
         }
     }//GEN-LAST:event_bDocPoprzedniActionPerformed
 
@@ -258,8 +259,7 @@ public class EdytujDokumentFrame extends javax.swing.JFrame {
         if(counterD+1<listaDokumentow.size()){
             counterD+=1;
             this.wyswietl(counterP, counterD);
-            if(counterD==listaDokumentow.size()-1 ) bDocNastepny.setEnabled(false);
-            bDocPoprzedni.setEnabled(true);
+            
         }
     }//GEN-LAST:event_bDocNastepnyActionPerformed
 
