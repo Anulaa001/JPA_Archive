@@ -25,7 +25,7 @@ import javax.persistence.Table;
 @NamedQueries({
     @NamedQuery(name = "Dokumenty.findAll", query = "SELECT d FROM Dokumenty d"),
     @NamedQuery(name = "Dokumenty.findById", query = "SELECT d FROM Dokumenty d WHERE d.id = :id"),
-    @NamedQuery(name = "Dokumenty.findById_pracownika", query = "SELECT d FROM Dokumenty d WHERE d.idpracownika = :idpracownika ORDER BY d.rodzaj DESC"),
+    @NamedQuery(name = "Dokumenty.findById_pracownika", query = "SELECT d FROM Dokumenty d WHERE d.idpracownika = :idpracownika"),
     @NamedQuery(name = "Dokumenty.findByRodzaj", query = "SELECT d FROM Dokumenty d WHERE d.rodzaj = :rodzaj"),
     @NamedQuery(name = "Dokumenty.findByNazwa", query = "SELECT d FROM Dokumenty d WHERE d.nazwa = :nazwa")})
 public class Dokumenty implements Serializable {

@@ -121,7 +121,7 @@ public class Pracownik implements Serializable {
 
     @Override
     public String toString() {
-        return idpracownika + ", "+imie+", "+nazwisko;
+        return idpracownika + ". "+imie+" "+nazwisko;
     }
     
 }

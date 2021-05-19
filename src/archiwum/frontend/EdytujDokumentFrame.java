@@ -25,20 +25,24 @@ public class EdytujDokumentFrame extends javax.swing.JFrame {
         counterP = 0;
         counterD = 0;
         listaPracownikow = db.pracownicy();
-        p = listaPracownikow.get(counterP);
-        listaDokumentow = db.dokumenty_idPracownika(p);
+        //1
         wyswietl(counterP, counterD);
         bPrPoprzedni.setEnabled(false);
         bDocPoprzedni.setEnabled(false);
     }
     private void wyswietl(int counterP, int counterD){	      
          this.p = listaPracownikow.get(counterP);
-         tPracownik.setText(String.valueOf(p.getIdpracownika())+". "+p.getImie()+" "+p.getNazwisko());
+         tPracownik.setText(p.toString());
          this.listaDokumentow = db.dokumenty_idPracownika(p);
+         if(listaDokumentow.size()==0){
+             counterD=0;
+            tRodzaj.setText("");
+            tNazwa.setText("");
+         }else{
          this.d = listaDokumentow.get(counterD);
          tRodzaj.setText(d.getRodzaj());
          tNazwa.setText(d.getNazwa());
-      
+         }
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -225,6 +229,7 @@ public class EdytujDokumentFrame extends javax.swing.JFrame {
             if(counterP==0) bPrPoprzedni.setEnabled(false);
             bPrNastepny.setEnabled(true);
         }
+        
     }//GEN-LAST:event_bPrPoprzedniActionPerformed
 
     private void bPrNastepnyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bPrNastepnyActionPerformed
@@ -235,6 +240,7 @@ public class EdytujDokumentFrame extends javax.swing.JFrame {
             if(counterP==listaPracownikow.size()-1) bPrNastepny.setEnabled(false);
             bPrPoprzedni.setEnabled(true);
         }
+        
     }//GEN-LAST:event_bPrNastepnyActionPerformed
 
     private void bDocPoprzedniActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bDocPoprzedniActionPerformed
@@ -252,7 +258,7 @@ public class EdytujDokumentFrame extends javax.swing.JFrame {
         if(counterD+1<listaDokumentow.size()){
             counterD+=1;
             this.wyswietl(counterP, counterD);
-            if(counterD==listaDokumentow.size()-1) bDocNastepny.setEnabled(false);
+            if(counterD==listaDokumentow.size()-1 ) bDocNastepny.setEnabled(false);
             bDocPoprzedni.setEnabled(true);
         }
     }//GEN-LAST:event_bDocNastepnyActionPerformed

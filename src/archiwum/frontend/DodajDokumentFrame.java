@@ -23,6 +23,7 @@ public class DodajDokumentFrame extends javax.swing.JFrame {
         initComponents();
         db = new BazaDanych();
         d = new Dokumenty();
+        p = new Pracownik();
         counter = 0;
         listaPracownikow = db.pracownicy();
         wyswietlDokumenty(counter);
